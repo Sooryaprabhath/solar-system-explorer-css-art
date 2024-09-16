@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore the Solar System</title>
+  <style>
+    /* General Style */
+    body {
+      background: linear-gradient(to bottom, #000022, #000000);
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      color: #ffcc00;
+      text-shadow: 2px 2px 8px #ff9900;
+    }
+
+    /* Section Styles */
+    header {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .planets, .moons, .solar-system-objects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    /* Planet Styling */
+    .planet {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: relative;
+    }
+
+    .planet:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Orbit Animation */
+    @keyframes orbit {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .planet::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #ffcc00;
+      border-radius: 50%;
+      animation: orbit 5s infinite linear;
+    }
+
+    footer {
+      padding: 10px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffcc00;
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .modal-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .close-modal {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #ffcc00;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .close-modal:hover {
+      background-color: #ff9900;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .planets, .moons, .solar-system-objects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Welcome to Our Solar System</h1>
+    <p>Discover the wonders of the Sun, planets, moons, and everything else that makes our solar system extraordinary.</p>
+  </header>
+
+  <!-- Solar System Overview Section -->
+  <section class="solar-system-overview">
+    <h2>About Our Solar System</h2>
+    <p>Our solar system is home to the Sun, eight planets, dozens of moons, countless asteroids, comets, and other celestial objects. Located in the Milky Way galaxy, it's the only place we know of that harbors life – on Earth.</p>
+  </section>
+
+  <!-- Planets Section -->
+  <section class="planets">
+    <h2>Planets of the Solar System</h2>
+
+    <!-- Mercury -->
+    <article class="planet mercury">
+      <h3>Mercury</h3>
+      <p>Mercury is the closest planet to the Sun and the smallest in our solar system. It has no atmosphere, and its surface temperatures vary drastically between day and night.</p>
+      <ul>
+        <li>Distance from Sun: 57.9 million km</li>
+        <li>Orbital Period: 88 Earth days</li>
+        <li>Moons: None</li>
+      </ul>
+    </article>
+
+    <!-- Venus -->
+    <article class="planet venus">
+      <h3>Venus</h3>
+      <p>Venus is the second planet from the Sun and is known for its thick, toxic atmosphere. Its surface is hotter than any other planet in the solar system due to the greenhouse effect.</p>
+      <ul>
+        <li>Distance from Sun: 108.2 million km</li>
+        <li>Orbital Period: 225 Earth days</li>
+        <li>Moons: None</li>
+      </ul>
+    </article>
+
+    <!-- Earth -->
+    <article class="planet earth">
+      <h3>Earth</h3>
+      <p>Earth is the third planet from the Sun and the only planet known to support life. It has one natural satellite, the Moon.</p>
+      <ul>
+        <li>Distance from Sun: 149.6 million km</li>
+        <li>Orbital Period: 365.25 Earth days</li>
+        <li>Moons: 1 (The Moon)</li>
+      </ul>
+    </article>
+
+    <!-- Mars -->
+    <article class="planet mars">
+      <h3>Mars</h3>
+      <p>Mars, the fourth planet from the Sun, is often called the "Red Planet" because of its reddish appearance caused by iron oxide on its surface. It's a prime candidate for future human exploration.</p>
+      <ul>
+        <li>Distance from Sun: 227.9 million km</li>
+        <li>Orbital Period: 687 Earth days</li>
+        <li>Moons: 2 (Phobos, Deimos)</li>
+      </ul>
+    </article>
+
+    <!-- Jupiter -->
+    <article class="planet jupiter">
+      <h3>Jupiter</h3>
+      <p>Jupiter is the largest planet in our solar system. It's known for its massive size, Great Red Spot (a giant storm), and many moons, including the four largest: Io, Europa, Ganymede, and Callisto.</p>
+      <ul>
+        <li>Distance from Sun: 778.5 million km</li>
+        <li>Orbital Period: 12 Earth years</li>
+        <li>Moons: 79 (4 major: Io, Europa, Ganymede, Callisto)</li>
+      </ul>
+    </article>
+
+    <!-- Saturn -->
+    <article class="planet saturn">
+      <h3>Saturn</h3>
+      <p>Saturn is famous for its stunning ring system, which is made up of ice and rock. It's the second-largest planet in the solar system and has numerous moons, including Titan, its largest.</p>
+      <ul>
+        <li>Distance from Sun: 1.43 billion km</li>
+        <li>Orbital Period: 29 Earth years</li>
+        <li>Moons: 83 (Titan being the largest)</li>
+      </ul>
+    </article>
+
+    <!-- Uranus -->
+    <article class="planet uranus">
+      <h3>Uranus</h3>
+      <p>Uranus is unique for its sideways rotation and faint ring system. It's an ice giant with a frigid atmosphere composed mainly of hydrogen, helium, and methane.</p>
+      <ul>
+        <li>Distance from Sun: 2.87 billion km</li>
+        <li>Orbital Period: 84 Earth years</li>
+        <li>Moons: 27</li>
+      </ul>
+    </article>
+
+    <!-- Neptune -->
+    <article class="planet neptune">
+      <h3>Neptune</h3>
+      <p>Neptune, the furthest planet from the Sun, is a deep blue ice giant. Its most prominent feature is the Great Dark Spot, a storm system similar to Jupiter's Great Red Spot.</p>
+      <ul>
+        <li>Distance from Sun: 4.5 billion km</li>
+        <li>Orbital Period: 165 Earth years</li>
+        <li>Moons: 14 (Triton being the largest)</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <p>&copy; 2024 Explore the Solar System. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Simulate Planetary Hover Effects and Modal Popup
+    document.querySelectorAll('.planet').forEach(planet => {
+      planet.addEventListener('mouseover', () => {
+        planet.style.transform = 'scale(1.2)';
+        planet.style.transition = 'transform 0.5s';
+      });
+      planet.addEventListener('mouseout', () => {
+        planet.style.transform = 'scale(1)';
+      });
+
+      // Click for Modal
+      planet.addEventListener('click', () => {
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.innerHTML = `
+          <div class="modal-content">
+            <h2>${planet.querySelector('h3').textContent}</h2>
+            <p>More facts about this planet...</p>
+            <button class="close-modal">Close</button>
+          </div>
+        `;
+        document.body.appendChild(modal);
+        
+        modal.querySelector('.close-modal').addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+      });
+    });
+
+    // Night Mode Toggle
+    const nightModeToggle = document.createElement('button');
+    nightModeToggle.textContent = 'Toggle Night Mode';
+    nightModeToggle.style.position = 'fixed';
+    nightModeToggle.style.top = '20px';
+    nightModeToggle.style.right = '20px';
+    nightModeToggle.style.backgroundColor = '#ffcc00';
+    nightModeToggle.style.color = '#000';
+    nightModeToggle.style.padding = '10px';
+    document.body.appendChild(nightModeToggle);
+
+    nightModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('day-mode');
+      if (document.body.classList.contains('day-mode')) {
+        document.body.style.background = '#ffffff';
+        document.body.style.color = '#000000';
+      } else {
+        document.body.style.background = 'linear-gradient(to bottom, #000022, #000000)';
+        document.body.style.color = '#ffffff';
+      }
+    });
+  </script>
+
+</body>
+</html>
